@@ -1,10 +1,39 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Input from "@/components/Input";
 import SocialButton from "@/components/SocialButton";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8081/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+
+      const data = await response.text();
+
+      alert(data);
+    } catch (error) {
+      console.error(error);
+      alert("Login Failed");
+    }
+  };
+
   return (
     <main className="min-h-screen flex items-center justify-center bg-[#F3F2EE] p-4">
       <div className="bg-white rounded-[32px] w-full max-w-[390px] px-8 py-10 shadow-sm">
@@ -14,8 +43,23 @@ export default function LoginPage() {
         </h1>
 
         <div className="space-y-4">
-          <Input placeholder="Email" />
-          <Input placeholder="Password" type="password" />
+
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full h-14 px-5 rounded-full border border-[#ECECEC]"
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full h-14 px-5 rounded-full border border-[#ECECEC]"
+          />
+
         </div>
 
         <div className="text-center mt-4">
@@ -24,7 +68,10 @@ export default function LoginPage() {
           </button>
         </div>
 
-        <button className="w-full h-14 rounded-full bg-[#143300] text-white mt-5 font-medium cursor-pointer">
+        <button
+          onClick={handleLogin}
+          className="w-full h-14 rounded-full bg-[#143300] text-white mt-5 font-medium cursor-pointer"
+        >
           Login
         </button>
 
