@@ -145,11 +145,15 @@ spring.data.mongodb.uri=YOUR_MONGODB_URI
 
 --- 
 
-#output 
+ # output 
+
+ ## Home Page
 <img width="1202" height="865" alt="image" src="https://github.com/user-attachments/assets/6545410f-e2b8-4c3d-bb87-8ed7f5865d52" />
 
+## Login Page
 <img width="1266" height="865" alt="image" src="https://github.com/user-attachments/assets/c2d8dde0-6245-4680-983f-355eff660ce4" /> 
 
+## Sign Up Page 
 <img width="1163" height="815" alt="image" src="https://github.com/user-attachments/assets/9b7c449d-20d8-400f-8b15-5713fe3ebfce" />
 
 
